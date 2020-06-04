@@ -62,7 +62,7 @@ feed_dict.update({placeholders['labels']: np.zeros([10,6])})
 
 vert = sess.run(model.output3, feed_dict=feed_dict)
 vert = np.hstack((np.full([vert.shape[0],1], 'v'), vert))
-face = np.loadtxt('/content/mesh_genData/ellipsoid/face3.obj', dtype='|S32')
+face = np.loadtxt('/content/mesh_gen/Data/ellipsoid/face3.obj', dtype='|S32')
 mesh = np.vstack((vert, face))
 pred_path = FLAGS.image.replace('.png', '.obj')
 np.savetxt(pred_path, mesh, fmt='%s', delimiter=' ')
