@@ -12,7 +12,7 @@ tf.set_random_seed(seed)
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS
-flags.DEFINE_string('data_list', 'Data/train_list.txt', 'Data list.') 
+flags.DEFINE_string('data_list', '/content/mesh_gen/Data/train_list.txt', 'Data list.') 
 flags.DEFINE_float('learning_rate', 1e-5, 'Initial learning rate.')
 flags.DEFINE_integer('epochs', 5, 'Number of epochs to train.')
 flags.DEFINE_integer('hidden', 256, 'Number of units in hidden layer.') 
@@ -51,7 +51,7 @@ sess.run(tf.global_variables_initializer())
 
 train_loss = open('record_train_loss.txt', 'a')
 train_loss.write('Start training, lr =  %f\n'%(FLAGS.learning_rate))
-pkl = pickle.load(open('Data/ellipsoid/info_ellipsoid.dat', 'rb'))
+pkl = pickle.load(open('/content/mesh_gen/Data/ellipsoid/info_ellipsoid.dat', 'rb'))
 feed_dict = construct_feed_dict(pkl, placeholders)
 
 train_number = data.number
